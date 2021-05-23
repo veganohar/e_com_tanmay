@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <title>Add Product</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="./addproduct.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1 class="text-center m-4">Product Form</h1>
+            <form onsubmit="onSubmit(event)">
+                <div class="row">
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="company">Company: </label>
+                        </div>
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="company">
+                        </div>
+                    </div>
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="type">Type: </label>
+                        </div>
+                        <div class="col-10">
+                            <select id="type" class="form-control">
+                                <option value="">Select a Type</option>
+                                <option value="Toddler">Toddler</option>
+                                <option value="Children">Children</option>
+                                <option value="Adults">Adults</option>
+                                <option value="Senior Citizens">Senior Citizens</option>
+                                <option value="Handicapped">Handicapped</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="size">Size: </label>
+                        </div>
+                        <div class="col-10">
+                            <select id="size" class="form-control">
+                                <option value="">Select a Size</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="price">Price: </label>
+                        </div>
+                        <div class="col-10">
+                            <input type="number" class="form-control" id="price">
+                        </div>
+                    </div>
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="model">Model: </label>
+                        </div>
+                        <div class="col-10">
+                            <select id="model" class="form-control">
+                                <option value="">Select a Model</option>
+                                <option value="Boots">Boots</option>
+                                <option value="Formal">Formal</option>
+                                <option value="Heals">Heals</option>
+                                <option value="Joggers">Joggers</option>
+                                <option value="Party Shoes">Party Shoes</option>
+                                <option value="Sandals">Sandals</option>
+                                <option value="Slippers">Slippers</option>
+                                <option value="Sports Shoe">Sports Shoe</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 row mt-5">
+                        <div class="col-2">
+                            <label for="color">Color: </label>
+                        </div>
+                        <div class="col-10">
+                            <select id="color" class="form-control">
+                                <option value="">Select a Color</option>
+                                <option value="Black">Black</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Brown">Brown</option>
+                                <option value="Green">Green</option>
+                                <option value="Indigo">Indigo</option>
+                                <option value="Orange">Orange</option>
+                                <option value="Pink">Pink</option>
+                                <option value="Red">Red</option>
+                                <option value="White">White</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 justify-content-center row mt-5">
+                        <button class="btn btn-primary" type="submit">Add</button>
+                        <span class="ml-2 mr-2"></span>
+                        <button class="btn btn-danger" type="reset">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
