@@ -4,9 +4,11 @@ const port = 3000;
 const bodyparser = require("body-parser");
 const db = require("./app/models");
 const config = require("./app/config/db.config");
+const cors = require("cors");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded());
+app.use(cors());
 app.listen(port,()=>{
     console.log("Your App is running on the Port " + port);
 })
