@@ -9,6 +9,10 @@ const Product = mongoose.model(
         price: Number,
         model: String,
         color: String,
+        isActive:{
+            type:Boolean,
+            default:true
+        },
         createdOn: {
             type: Date,
             default: Date.now

@@ -3,7 +3,7 @@ const Product = db.product;
 
 
 exports.getAllProducts = (req,res)=>{
-    Product.find((err,products)=>{
+    Product.find().sort("-createdOn").exec((err,products)=>{
         if(err){
             return res.status(500).send({message:err});
         }
