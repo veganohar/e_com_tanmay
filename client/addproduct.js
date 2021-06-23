@@ -1,11 +1,11 @@
-
-
+var isEdit = false;
+var sel_id;
 window.onload = function(){
     getAllProducts();
 }
 
 async function getAllProducts(){
-    let api = `http://localhost:3000/api/producs/getAllProducts`;
+    let api = `http://localhost:3000/api/products/getAllProducts`;
     let response = await fetch(api);
     let result = await response.json();
     showData(result.data);
@@ -28,14 +28,61 @@ function showData(products){
                 <td>${e.price}</td>
                 <td>${e.model}</td>
                 <td>${e.color}</td>
-                <td><input type="checkbox" ${cb}></td>
+                <td><input type="checkbox" onchange="onStatus(event,'${e._id}')" ${cb}></td>
                 <td>
-                    <button class="btn btn-info">Edit</button>
+                    <button class="btn btn-info" onclick="onEdit('${e._id}')">Edit</button>
                     <button class="btn btn-danger">Delete</button>
                 </td>
         </tr>`;
         tbl.insertAdjacentHTML('beforeend',trow);
     }
+}
+
+
+async function onEdit(id){
+    let api = `http://localhost:3000/api/products/getProductById/${id}`;
+    let response = await fetch(api);
+    let result = await response.json();
+    let p = result.data;
+    document.getElementById("company").value = p.company;
+    document.getElementById("type").value = p.type;
+    document.getElementById("size").value = p.size;
+    document.getElementById("price").value = p.price;
+    document.getElementById("model").value = p.model;
+    document.getElementById("color").value = p.color;
+    isEdit = true;
+    document.getElementById("sbtn").innerHTML = "Update";
+    document.getElementById("sbtn").className = "btn btn-success";
+    sel_id = id;
+}
+
+function onReset(){
+    isEdit = false;
+    document.getElementById("sbtn").innerHTML = "Add";
+    document.getElementById("sbtn").className = "btn btn-primary";
+    sel_id = null;
+}
+
+
+async function onStatus(e,id){
+let data = {
+    id:id,
+    isActive:e.target.checked
+}
+let api = `http://localhost:3000/api/products/updateProduct`;
+    let options = {
+        method:"PUT",
+        body:JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }
+
+    let response = await fetch(api,options);
+    let result = await response.json();
+    console.log(result);
+    getAllProducts();
 }
 
 function onSubmit(e){
@@ -52,7 +99,7 @@ function onSubmit(e){
 }
 
 async function saveNewProduct(product){
-    let api = `http://localhost:3000/api/producs/saveNewProduct`;
+    let api = `http://localhost:3000/api/products/saveNewProduct`;
     let options = {
         method:"POST",
         body:JSON.stringify(product),

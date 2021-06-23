@@ -8,8 +8,9 @@ module.exports = function (app) {
        
         next();
       });
-    app.post("/api/producs/saveNewProduct", controller.saveNewProduct);
-    app.get("/api/producs/getAllProducts", controller.getAllProducts);
-    app.put("/api/producs/updateProduct", controller.updateProduct);
-    app.delete("/api/producs/deleteProduct/:pid", controller.deleteProduct);
+    app.post("/api/products/saveNewProduct", controller.saveNewProduct);
+    app.get("/api/products/getAllProducts", controller.getAllProducts);
+    app.get("/api/products/getProductById/:pid", controller.getProductById);
+    app.put("/api/products/updateProduct", controller.updateProduct);
+    app.delete("/api/products/deleteProduct/:pid", controller.deleteProduct);
 }

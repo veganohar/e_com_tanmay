@@ -55,3 +55,14 @@ exports.deleteProduct =  (req,res)=>{
         })
     })
 }
+
+exports.getProductById = (req,res)=>{
+    Product.findOne({_id:req.params.pid},(err,product)=>{
+        if(err){
+            return res.status(500).send({message:err});
+        }
+        res.status(200).send({
+            data:product
+        })
+    })
+}
