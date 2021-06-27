@@ -3,7 +3,14 @@ const Product = db.product;
 
 
 exports.getAllProducts = (req,res)=>{
-    Product.find().sort("-createdOn").exec((err,products)=>{
+    let sq;
+    if(req.query.sortby){
+        sq = req.query.sortby;
+        sq=req.query.order=='asc'?sq:`-${sq}`;
+    }else{
+        sq = "-createdOn";
+    }
+    Product.find().sort(sq).exec((err,products)=>{
         if(err){
             return res.status(500).send({message:err});
         }

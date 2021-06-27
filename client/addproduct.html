@@ -8,6 +8,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="./addproduct.js"></script>
+        <style>
+            th{
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
@@ -115,13 +120,13 @@
                     <thead>
                         <tr>
                             <th>S.No</th>
-                            <th>Company</th>
-                            <th>Type</th>
-                            <th>Size</th>
-                            <th>Price</th>
-                            <th>Model</th>
-                            <th>Color</th>
-                            <th>Status</th>
+                            <th onclick="onSort('company')" id="tcompany">Company</th>
+                            <th onclick="onSort('type')" id="ttype">Type</th>
+                            <th onclick="onSort('size')" id="tsize">Size</th>
+                            <th onclick="onSort('price')" id="tprice">Price</th>
+                            <th onclick="onSort('model')" id="tmodel">Model</th>
+                            <th onclick="onSort('color')" id="tcolor">Color</th>
+                            <th onclick="onSort('isActive')" id="tisActive">Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>    

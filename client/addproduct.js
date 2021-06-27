@@ -1,11 +1,12 @@
 var isEdit = false;
 var sel_id;
+var sOrder = "asc";
 window.onload = function () {
     getAllProducts();
 }
 
-async function getAllProducts() {
-    let api = `http://localhost:3000/api/products/getAllProducts`;
+async function getAllProducts(uri) {
+    let api = uri?uri:`http://localhost:3000/api/products/getAllProducts`;
     let response = await fetch(api);
     let result = await response.json();
     showData(result.data);
@@ -48,6 +49,7 @@ if(confirm("Do you want to Delete?")){
     let response = await fetch(api, options);
     let result = await response.json();
     getAllProducts();
+    resetActiveClass();
 }   
 }
 
@@ -77,6 +79,7 @@ function onReset() {
 
 
 function onStatus(e, id) {
+    resetActiveClass();
     let data = {
         id: id,
         isActive: e.target.checked
@@ -85,6 +88,7 @@ function onStatus(e, id) {
 }
 
 function onSubmit(e) {
+    resetActiveClass();
     e.preventDefault();
     let product = {
         company: document.getElementById("company").value,
@@ -130,4 +134,24 @@ async function saveNewProduct(product) {
     getAllProducts();
     document.getElementById("pForm").reset();
 
+}
+
+
+async function onSort(p){
+    await resetActiveClass();
+    console.log(p);
+    document.getElementById(`t${p}`).className = "bg-primary text-light";
+    let api = `http://localhost:3000/api/products/getAllProducts?sortby=${p}&&order=${sOrder}`;
+    sOrder=sOrder=="asc"?"desc":"asc";
+    getAllProducts(api);
+}
+
+function resetActiveClass(){
+    document.getElementById(`tcompany`).className = "";
+    document.getElementById(`ttype`).className = "";
+    document.getElementById(`tsize`).className = "";
+    document.getElementById(`tprice`).className = "";
+    document.getElementById(`tmodel`).className = "";
+    document.getElementById(`tcolor`).className = "";
+    document.getElementById(`tisActive`).className = "";
 }
